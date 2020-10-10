@@ -1,11 +1,10 @@
 import express from "express";
 import cors from "cors";
+import healthCheck from './healthCheck.js';
+
 const router = express.Router();
 router.use(cors());
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/hello', healthCheck);
 
 export default router;
