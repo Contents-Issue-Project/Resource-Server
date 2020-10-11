@@ -6,12 +6,15 @@ import logger from "morgan";
 import dotenv from "dotenv"
 import helmet from "helmet"
 import hpp from "hpp"
+import cors from "cors";
 
 dotenv.config();
 
-import router from "./routes/index.js";
+import healthCheckRouter from "./routes/healthCheck.js";
 
 const app = express();
+
+app.use(cors());
 
 if(process.env.NODE_ENV === 'production'){
   app.use(logger('combined'));
@@ -25,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', router);
+app.use('/hello', healthCheckRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -40,7 +43,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err.message);
 });
 
 export default app;
