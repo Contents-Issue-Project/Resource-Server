@@ -10,7 +10,9 @@
     "url": "https://github.com/Contents-Issue-Project/Resource-Server"
   },
   "scripts": {
-    "start": "node bin/www.js"
+    "start": "NODE_ENV=production node bin/www.js",
+    "local": "NODE_ENV=development node bin/www.js",
+    "test": "mocha ./tests/**/*.spec.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
