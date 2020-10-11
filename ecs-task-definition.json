@@ -33,5 +33,5 @@
   "requiresCompatibilities": [
     "EC2"
   ],
-  "networkMode": "bridge",
+  "networkMode": "bridge"
 }
