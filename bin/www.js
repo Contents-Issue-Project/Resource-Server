@@ -6,6 +6,9 @@
 import app from "../app.js";
 import http from "http";
 import debug from "debug";
+import dbConnector from '../db/connectors/index.js';
+
+dbConnector.connectMongo();
 
 /**
  * Get port from environment and store in Express.
