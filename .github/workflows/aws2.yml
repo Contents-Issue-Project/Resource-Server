@@ -28,6 +28,8 @@ on:
     branches :
       - develop
     types: [opened, synchronize]
+  release:
+    types: [created]
 
 name: Deploy to Amazon ECS
 
