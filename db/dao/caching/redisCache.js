@@ -8,10 +8,27 @@ class RedisCache{
         return this;
     }
     async getValue(key){
-        return this.client.get(key);
+        const redisPromise = this.client.get(key);
+
+        return redisPromise.then((data)=>{
+            return new Promise(((resolve, reject) => {
+                resolve(JSON.parse(data));
+            }))
+        })
     }
     async setValue(key, value){
-        return this.client.set(key, value);
+        let target;
+        if(typeof(value) === "object"){
+            target = JSON.stringify(value);
+        }
+        else{
+            target = value;
+        }
+        return this.client.set(key, target);
+    }
+    //TODO delete 구현하기
+    async deleteValue(key){
+        return this.client.del(key);
     }
 }
 

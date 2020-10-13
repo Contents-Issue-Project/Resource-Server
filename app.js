@@ -7,10 +7,12 @@ import dotenv from "dotenv"
 import helmet from "helmet"
 import hpp from "hpp"
 import cors from "cors";
+import bodyParser from 'body-parser';
 
 dotenv.config();
 
 import healthCheckRouter from "./routes/healthCheck.js";
+import testRouter from './routes/testRouter.js';
 
 const app = express();
 
@@ -24,11 +26,13 @@ if(process.env.NODE_ENV === 'production'){
   app.use(logger('dev'));
 }
 
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/hello', healthCheckRouter);
+app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,6 +47,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  console.log("error occ");
   res.send(err.message);
 });
 
