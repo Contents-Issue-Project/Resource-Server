@@ -51,7 +51,7 @@ const contentsOverview = {
             "is_single" : true,
             "poster_url" : "/test/posters/e456",
             "top_words" : ["nolan","zimmer","dicaprio"]
-        },
+        }
     ]
 }
 

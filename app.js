@@ -13,6 +13,7 @@ dotenv.config();
 
 import healthCheckRouter from "./routes/healthCheck.js";
 import testRouter from './routes/testRouter.js';
+import contentsRouter from './routes/contentsRouter.js';
 
 const app = express();
 
@@ -33,6 +34,8 @@ app.use(cookieParser());
 
 app.use('/hello', healthCheckRouter);
 app.use('/test', testRouter);
+app.use('/v1/contents', contentsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
