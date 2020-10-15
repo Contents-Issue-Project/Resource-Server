@@ -1,4 +1,5 @@
 import CacheManager from "../db/connectors/cacheManager.js";
+import userDAO from "../db/dao/userDAO.js";
 
 const manager = new CacheManager();
 
@@ -26,8 +27,20 @@ const deleteRedisData = async(req, res, next)=>{
     res.json({"result":"OK"});
 }
 
+const addUser = async(req, res, next)=>{
+    const userId = req.body['user_id'];
+    const email = req.body['email'];
+    const nickName = req.body['nick_name'];
+
+    await userDAO.addUser(userId, email, nickName);
+    res.json({
+        "message" : "OK"
+    });
+}
+
 export default  {
     getRedisData,
     deleteRedisData,
-    setRedisData
+    setRedisData,
+    addUser
 }

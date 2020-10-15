@@ -20,6 +20,7 @@ const connect = () => {
 mongoose.connection.on('error', (error) => {
     console.error('mongodb error', error);
 });
+
 mongoose.connection.on('disconnected', () => {
     console.error('mongodb 연결 끊김. 연결 재시도.');
     connect();
