@@ -8,8 +8,10 @@ describe('server fundamentals', ()=>{
         request(app)
             .get('/hello')
             .end((err,res)=>{
-                console.log(err);
-                res.body.should.containEql({"result":"hello!"});
+                if(err){
+                    console.log(err);
+                }
+                res.body.should.containEql({result:"hello"});
                 done();
             });
     });
@@ -18,4 +20,11 @@ describe('server fundamentals', ()=>{
     //     connector.connectMongo();
     //     done();
     // })
+
+    it('cache sync test', async()=>{
+        const cacheClient = new connector.CacheManager();
+        await cacheClient.setValue("key", "value");
+        const result = await cacheClient.getValue("key");
+        result.should.eql("value");
+    });
 });

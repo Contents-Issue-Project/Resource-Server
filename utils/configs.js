@@ -7,5 +7,6 @@ if(process.env.NODE_ENV !== 'production'){
     dotenv.config();
 }
 config.mongoURL = process.env.MONGO_URL;
+config.redisURL = process.env.REDIS_URL;
 
 export default config;

@@ -24,12 +24,9 @@
 #    and best practices on handling the access key credentials.
 
 on:
-  pull_request_target:
-    branches :
+  push:
+    branches-ignore: 
       - develop
-    types: [opened, synchronize]
-  release:
-    types: [created]
 
 name: Deploy to Amazon ECS
 
