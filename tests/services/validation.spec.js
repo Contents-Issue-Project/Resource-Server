@@ -88,8 +88,8 @@ describe('validation', ()=>{
                 search_word : "harry potter"
             };
             const validationResult = validation.checkSearchValidation(contentType, requestObj);
-            validationResult.result.should.eql(false);
-            validationResult.err_message.should.containEql("dateRange");
+            validationResult.result.should.eql(true);
+            validationResult.err_message.should.be.empty();
             done();
         })
         it('dateformat not matching', (done)=>{

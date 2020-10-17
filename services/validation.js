@@ -7,6 +7,17 @@ const setError = (resultObj, errMessage)=>{
     resultObj.err_message.push(errMessage);
 }
 
+// 하나만 설정되어있으면 잘못설정한거지만, 둘다 비어있다면 안적은거겠지.
+const checkDateEmpty = (dateObj)=>{
+    if(dateObj === undefined ||
+        (dateObj.start_date === undefined && dateObj.end_date === undefined)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 const checkSearchValidation = (contentType, searchBody)=>{
     const validationInfo = {
         result : true,
@@ -23,7 +34,7 @@ const checkSearchValidation = (contentType, searchBody)=>{
         setError(validationInfo, "searchWord");
     }
 
-    if(date_range === undefined || !(checkDateValidation(date_range))){
+    if(!checkDateEmpty(date_range) && !(checkDateValidation(date_range))){
         setError(validationInfo, "dateRange");
     }
 
@@ -58,8 +69,11 @@ const checkDateValidation = (dateRangeObj)=>{
 }
 
 const checkSubTypeValidation = (subTypes)=>{
+    if(subTypes === undefined){
+        return true;
+    }
 
-    return subTypes.isEmpty() || subTypes.every((element)=>definedSubTypes.includes(element));
+    return subTypes.every((element)=>definedSubTypes.includes(element));
 }
 
 const checkMovieParamValidation = (subTypes, additional)=>{
