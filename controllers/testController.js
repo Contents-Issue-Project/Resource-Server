@@ -1,5 +1,6 @@
 import CacheManager from "../db/connectors/cacheManager.js";
 import userDAO from "../db/dao/userDAO.js";
+import contentDAO from "../db/dao/contentDAO.js";
 
 const manager = new CacheManager();
 
@@ -38,9 +39,23 @@ const addUser = async(req, res, next)=>{
     });
 }
 
+const addContent = async(req, res, next)=>{
+    const addBody = req.body;
+    try{
+        await contentDAO.addContent(addBody);
+    }
+    catch(e){
+        res.status(400);
+        res.json({message: "error"});
+        return;
+    }
+    res.json({message : "OK"})
+}
+
 export default  {
     getRedisData,
     deleteRedisData,
     setRedisData,
-    addUser
+    addUser,
+    addContent
 }
