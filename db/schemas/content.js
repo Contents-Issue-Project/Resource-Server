@@ -38,6 +38,7 @@ const contentSchema = new Schema({
     /*////////////////////////////////////////*/
     sub_type : [String],
     single_statistics : [String],
+    characters : [String],
 
     type_additional_data : Schema.Types.Mixed,
     series_additional_data : {
