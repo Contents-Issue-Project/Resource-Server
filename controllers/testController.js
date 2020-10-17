@@ -71,5 +71,6 @@ export default  {
     deleteRedisData,
     setRedisData,
     addUser,
-    addContent
+    addContent,
+    deleteContent
 }
