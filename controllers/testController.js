@@ -46,6 +46,7 @@ const addContent = async(req, res, next)=>{
         await contentDAO.addContent(addBody);
     }
     catch(e){
+        console.log(e);
         res.status(400);
         res.json({message: "error"});
         return;
@@ -59,6 +60,7 @@ const deleteContent = async(req, res, next)=>{
         await contentDAO.deleteContent(deleteID);
     }
     catch(e){
+        console.log(e);
         res.status(400);
         res.json({message : "error"});
         return;

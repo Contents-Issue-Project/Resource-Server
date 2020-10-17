@@ -2,7 +2,7 @@ import ContentModel from "../schemas/content.js";
 
 const findContents = async(searchParams)=>{
     // 없을 경우 null
-    return ContentModel.findOne(searchParams);
+    return ContentModel.find(searchParams);
 }
 
 const addContent = async(contentData)=>{
