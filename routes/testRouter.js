@@ -9,6 +9,7 @@ router.delete('/redis', testController.deleteRedisData);
 
 router.post('/mongo/user', testController.addUser);
 router.post('/mongo/contents', testController.addContent);
+router.delete('/mongo/contents', testController.deleteContent);
 
 /* mongo db test */
 // router.get('/mongo', function(req, res, next) {
