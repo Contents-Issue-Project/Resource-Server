@@ -28,7 +28,9 @@ const searchContents = async(req,res,next)=>{
             searchResult = await searchService.searchAll(searchParams);
             break;
     }
-    res.json(searchResult);
+    res.json({
+        results: searchResult
+    });
 }
 
 export default {
