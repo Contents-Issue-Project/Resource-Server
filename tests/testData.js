@@ -171,7 +171,7 @@ const contents = [
         "is_single" : true,
         "poster_url" : "/test/posters/a234",
         "top_words" : ["thor","ironman","thanos"],
-        "sub_type" : ["action"]
+        "sub_type" : ["action","fantasy"]
     },
     {
         "content_id" : "b456",
@@ -182,7 +182,7 @@ const contents = [
         "is_single" : true,
         "poster_url" : "/test/posters/b456",
         "top_words" : ["spiderman","peter","tom"],
-        "sub_type" : ["action"]
+        "sub_type" : ["action", "fantasy"]
     },
     {
         "content_id" : "c789",
@@ -193,7 +193,7 @@ const contents = [
         "is_single" : true,
         "poster_url" : "/test/posters/c789",
         "top_words" : ["joker","joaquin","arthur"],
-        "sub_type" : ["thriller"]
+        "sub_type" : ["thriller","horror","crime"]
     },
     {
         "content_id" : "d123",
@@ -204,7 +204,7 @@ const contents = [
         "is_single" : true,
         "poster_url" : "/test/posters/d123",
         "top_words" : ["parasite","capitalism","cannes"],
-        "sub_type" : ["thriller"]
+        "sub_type" : ["thriller","drama","comedy"]
     },
     {
         "content_id" : "e456",
@@ -215,7 +215,7 @@ const contents = [
         "is_single" : true,
         "poster_url" : "/test/posters/e456",
         "top_words" : ["nolan","zimmer","dicaprio"],
-        "sub_type" : ["action"]
+        "sub_type" : ["action","sci-fi"]
     },
     {
         "content_id" : "j901",
@@ -226,7 +226,7 @@ const contents = [
         "is_single" : false,
         "poster_url" : "/test/posters/j901",
         "top_words" : ["coulson","melinda","skye"],
-        "sub_type" : ["action"]
+        "sub_type" : ["action","drama","sci-fi"]
     },
     {
         "content_id" : "i678",
@@ -237,7 +237,7 @@ const contents = [
         "is_single" : false,
         "poster_url" : "/test/posters/i678",
         "top_words" : ["tom","holland","russel"],
-        "sub_type" : ["thriller"]
+        "sub_type" : ["thriller","crime"]
     },
     {
         "content_id" : "h345",
@@ -248,7 +248,7 @@ const contents = [
         "is_single" : false,
         "poster_url" : "/test/posters/h345",
         "top_words" : ["enola","millie","holmes"],
-        "sub_type" : []
+        "sub_type" : ["crime","adventure","mystery"]
     },
     {
         "content_id" : "g012",
@@ -259,7 +259,7 @@ const contents = [
         "is_single" : false,
         "poster_url" : "/test/posters/g012",
         "top_words" : ["benedict","sherlock","moriarty"],
-        "sub_type" : []
+        "sub_type" : ["crime","adventure","mystery"]
     },
     {
         "content_id" : "f789",
@@ -270,7 +270,7 @@ const contents = [
         "is_single" : false,
         "poster_url" : "/test/posters/f789",
         "top_words" : ["tokio","rio","professor"],
-        "sub_type" : ["thriller"]
+        "sub_type" : ["thriller","crime","drama"]
     }
 ]
 
