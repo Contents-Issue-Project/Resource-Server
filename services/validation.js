@@ -33,9 +33,9 @@ const checkSearchValidation = (contentType, searchBody)=>{
         setError(validationInfo, "contentType");
     }
 
-    if(search_word === undefined){
-        setError(validationInfo, "searchWord");
-    }
+    // if(search_word === undefined){
+    //     setError(validationInfo, "searchWord");
+    // }
 
     if(!checkDateEmpty(date_range) && !(checkDateValidation(date_range))){
         setError(validationInfo, "dateRange");
