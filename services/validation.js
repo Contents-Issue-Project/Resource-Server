@@ -1,6 +1,9 @@
 const possibleTypes = ["movie", "drama", "all"];
 const dateRe = new RegExp(/[0-9]{4}-(0[1-9]|1[0-2])/);
-const definedSubTypes = ["fantasy", "romance", "horror", "comedy", "action", "thriller"]
+const definedDramaSubTypes = ["fantasy", "animation", "adventure", "comedy", "action", "drama",
+"crime", "war", "family", "western", "mystery", "documentary", "sci-fi"]
+const definedMovieSubTypes = ["fantasy", "animation", "adventure", "comedy", "action", "drama",
+    "crime", "war", "family", "western", "mystery", "documentary", "sci-fi", "history", "horror", "music", "romance", "thriller", "tv"]
 
 const setError = (resultObj, errMessage)=>{
     resultObj.result = false;
@@ -49,11 +52,12 @@ const checkSearchValidation = (contentType, searchBody)=>{
                 setError(validationInfo, "additional");
             }
             break
-        // case 'all':
-        //     if(!checkAllParamValidation(searchBody.sub_type, searchBody.type_additional_data)){
-        //         setError(validationInfo, "additional");
-        //     }
-        //     break
+        //TODO 원래 all만의 subtype따로 검증해야 함
+        case 'all':
+            if(!checkMovieParamValidation(searchBody.sub_type, searchBody.type_additional_data)){
+                setError(validationInfo, "additional");
+            }
+            break
     }
 
     return validationInfo
@@ -68,22 +72,22 @@ const checkDateValidation = (dateRangeObj)=>{
     return (dateRe.test(dateRangeObj.start_date)) && (dateRe.test(dateRangeObj.end_date));
 }
 
-const checkSubTypeValidation = (subTypes)=>{
+const checkSubTypeValidation = (subTypes, desiredSubTypes)=>{
     if(subTypes === undefined){
         return true;
     }
 
-    return subTypes.every((element)=>definedSubTypes.includes(element));
+    return subTypes.every((element)=>desiredSubTypes.includes(element));
 }
 
 const checkMovieParamValidation = (subTypes, additional)=>{
     //TODO 이후 movie specific 조건 검증 필요
-    return checkSubTypeValidation(subTypes);
+    return checkSubTypeValidation(subTypes, definedMovieSubTypes);
 }
 
 const checkDramaParamValidation = (subTypes, additional)=>{
     //TODO 이후 drama specific 조건 검증 필요
-    return checkSubTypeValidation(subTypes);
+    return checkSubTypeValidation(subTypes, definedDramaSubTypes);
 }
 
 // const checkAllParamValidation = (subTypes, additional)=>{

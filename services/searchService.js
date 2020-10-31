@@ -20,6 +20,7 @@ const extractCommonParams = (params)=>{
 
 const searchMovie = async(searchParams)=>{
     // TODO movie만의 specific 조건 검증 + 검색 위한 param화
+    // 현재 상황에서는 content type을 parameter 지정하고 3개 메서드 합칠 수 있지만, 차후 분리 가능성 고려.
     try {
         const adaptedSearchParams = extractCommonParams(searchParams);
         adaptedSearchParams.content_type = "movie";
