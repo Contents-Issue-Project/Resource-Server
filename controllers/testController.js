@@ -1,5 +1,6 @@
 import CacheManager from "../db/connectors/cacheManager.js";
 import userDAO from "../db/dao/userDAO.js";
+import contentDAO from "../db/dao/contentDAO.js";
 
 const manager = new CacheManager();
 
@@ -38,9 +39,40 @@ const addUser = async(req, res, next)=>{
     });
 }
 
+const addContent = async(req, res, next)=>{
+    //TODO 원래는 에러 처리도 service layer에서 수행해야 한다
+    const addBody = req.body;
+    try{
+        await contentDAO.addContent(addBody);
+    }
+    catch(e){
+        console.log(e);
+        res.status(400);
+        res.json({message: "error"});
+        return;
+    }
+    res.json({message : "OK"});
+}
+
+const deleteContent = async(req, res, next)=>{
+    const deleteID = req.body['content_id'];
+    try{
+        await contentDAO.deleteContent(deleteID);
+    }
+    catch(e){
+        console.log(e);
+        res.status(400);
+        res.json({message : "error"});
+        return;
+    }
+    res.json({message : "OK"});
+}
+
 export default  {
     getRedisData,
     deleteRedisData,
     setRedisData,
-    addUser
+    addUser,
+    addContent,
+    deleteContent
 }

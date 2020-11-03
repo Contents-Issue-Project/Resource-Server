@@ -15,6 +15,7 @@ import healthCheckRouter from "./routes/healthCheck.js";
 import testRouter from './routes/testRouter.js';
 import contentsRouter from './routes/contentsRouter.js';
 import userRouter from './routes/userRouter.js';
+import searchRouter from './routes/searchRouter.js';
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.use('/hello', healthCheckRouter);
 app.use('/test', testRouter);
 app.use('/v1/contents', contentsRouter);
 app.use('/v1/user', userRouter);
-
+app.use('/v1/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
