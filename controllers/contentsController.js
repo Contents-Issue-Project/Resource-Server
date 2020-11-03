@@ -1,7 +1,10 @@
 import CacheManager from "../db/connectors/cacheManager.js";
+import extractContentOverview from "../services/extractContentOverview.js";
 
 const manager = new CacheManager();
 
+
+//TODO service layer로 분리.
 const getTrendingContents = async(req, res, next)=>{
     const resultCount = req.params['result_count'];
     let result;
@@ -14,10 +17,14 @@ const getTrendingContents = async(req, res, next)=>{
     else{
         res.status(400);
         res.json({
-            "message" : "resultCount should be 10 or 30"
+            "message" : "resultCount should be 10 or 30",
+            results : []
         });
     }
-    res.json(result);
+    const contentOverviews = result.map(extractContentOverview);
+    res.json({
+        results: contentOverviews
+    });
 }
 
 const getNewContents = async(req, res, next)=>{
@@ -32,10 +39,14 @@ const getNewContents = async(req, res, next)=>{
     else{
         res.status(400);
         res.json({
-            "message" : "resultCount should be 10 or 30"
+            "message" : "resultCount should be 10 or 30",
+            results : []
         });
     }
-    res.json(result);
+    const contentOverviews = result.map(extractContentOverview);
+    res.json({
+        results: contentOverviews
+    });
 }
 
 export default  {

@@ -1,8 +1,6 @@
 import contentDAO from "../db/dao/contentDAO.js";
+import extractContentOverview from "./extractContentOverview.js";
 
-const extractContentOverview =
-    ({content_id, title_kr, title_en, release_date, content_type, is_single, poster_url, top_words})=>
-        ({content_id, title_kr, title_en, release_date, content_type, is_single, poster_url, top_words});
 
 const extractCommonParams = (params)=>{
     const commonParams = {}
@@ -19,13 +17,15 @@ const extractCommonParams = (params)=>{
     return commonParams;
 }
 
+//TODO class 이용해서 중복 없앨 수 있지 않았나? 팩토리 메서드 패턴?
 const searchMovie = async(searchParams)=>{
     // TODO movie만의 specific 조건 검증 + 검색 위한 param화
     // 현재 상황에서는 content type을 parameter 지정하고 3개 메서드 합칠 수 있지만, 차후 분리 가능성 고려.
     try {
         const adaptedSearchParams = extractCommonParams(searchParams);
         adaptedSearchParams.content_type = "movie";
-
+        //TODO type additional data 검색 조건 추가
+        
         const searchResult = await contentDAO.findContents(adaptedSearchParams);
 
         console.log(searchResult);
