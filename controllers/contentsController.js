@@ -1,5 +1,8 @@
 import CacheManager from "../db/connectors/cacheManager.js";
 import extractContentOverview from "../services/extractContentOverview.js";
+import contentDetailService from "../services/contentDetailService.js";
+import seasonDetailService from "../services/seasonDetailService.js";
+import episodeDetailService from "../services/episodeDetailService.js";
 
 const manager = new CacheManager();
 
@@ -49,7 +52,77 @@ const getNewContents = async(req, res, next)=>{
     });
 }
 
+const getContentDetails = async(req, res, next)=>{
+    const contentId = req.params.content_id;
+    let result;
+    try {
+        result = await contentDetailService.getContentDetail(contentId);
+    }
+    catch(e){
+        console.log(e);
+        res.status(500);
+        res.json({});
+    }
+    if('content_id' in result){
+        res.status(200);
+    }
+    else{
+        res.status(404);
+    }
+    res.json(result);
+}
+
+const getSeasonDetails = async(req, res, next)=>{
+    const contentId = req.params.content_id;
+    const seasonNumber = req.params.season_number;
+    let result;
+
+    try {
+        result = await seasonDetailService.getSeasonDetail(contentId, seasonNumber);
+    }
+    catch(e){
+        console.log(e);
+        res.status(500);
+        res.json({});
+    }
+    if('content_id' in result){
+        res.status(200);
+    }
+    else{
+        res.status(404);
+    }
+    res.json(result);
+}
+
+const getEpisodeDetails = async(req, res, next)=>{
+    const contentId = req.params.content_id;
+    const seasonNumber = req.params.season_number;
+    const episodeNumber = req.params.episode_number;
+
+    let result;
+    try {
+        result = await episodeDetailService.getEpisodeDetail(contentId, seasonNumber, episodeNumber);
+    }
+    catch(e){
+        console.log(e);
+        res.status(500);
+        res.json({});
+    }
+
+    console.log(result);
+    if('content_id' in result){
+        res.status(200);
+    }
+    else{
+        res.status(404);
+    }
+    res.json(result);
+}
+
 export default  {
     getTrendingContents,
-    getNewContents
+    getNewContents,
+    getContentDetails,
+    getSeasonDetails,
+    getEpisodeDetails
 }
