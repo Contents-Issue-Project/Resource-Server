@@ -192,10 +192,7 @@ const contentDetails = [
             "director" : "joss whedon",
             "rating" : 8.5
         },
-        "season_data" : {
-            "season_count" : 0, // single contents이므로.
-            "seasons" : []
-        }
+        "season_count" : 0
     },
     {
         "content_id" : "b456",
@@ -227,10 +224,7 @@ const contentDetails = [
             "director" : "john watts",
             "rating" : 9.0
         },
-        "season_data" : {
-            "season_count" : 0, // single contents이므로.
-            "seasons" : []
-        }
+        "season_count" : 0
     },
     {
         "content_id" : "c789",
@@ -262,10 +256,7 @@ const contentDetails = [
             "director" : "todd phillips",
             "rating" : 9.5
         },
-        "season_data" : {
-            "season_count" : 0, // single contents이므로.
-            "seasons" : []
-        }
+        "season_count" : 0
     },
     {
         "content_id" : "d123",
@@ -297,10 +288,7 @@ const contentDetails = [
             "director" : "bong joon ho",
             "rating" : 10.0
         },
-        "season_data" : {
-            "season_count" : 0, // single contents이므로.
-            "seasons" : []
-        }
+        "season_count" : 0
     },
     {
         "content_id" : "e456",
@@ -332,10 +320,7 @@ const contentDetails = [
             "director" : "christopher nolan",
             "rating" : 8.5
         },
-        "season_data" : {
-            "season_count" : 0, // single contents이므로.
-            "seasons" : []
-        }
+        "season_count" : 0
     },
     {
         "content_id" : "j901",
@@ -358,10 +343,7 @@ const contentDetails = [
             "director" : "joss whedon",
             "rating" : 8.5
         },
-        "season_data" : {
-            "season_count" : 2,
-            "seasons" : [ObjectId("5fa2550bd415daab6e296014"), ObjectId("5fa25b55d415daab6e296018")]
-        }
+        "season_count" : 2
     },
     {
         "content_id" : "i678",
@@ -384,10 +366,7 @@ const contentDetails = [
             "director" : "antonio campos",
             "rating" : 8.5
         },
-        "season_data" : {
-            "season_count" : 1, //single season
-            "seasons" : [ObjectId("5fa2550bd415daab6e296014")]
-        }
+        "season_count" : 1
     },
     {
         "content_id" : "h345",
@@ -410,10 +389,7 @@ const contentDetails = [
             "director" : "harry bradbeer",
             "rating" : 7.5
         },
-        "season_data" : {
-            "season_count" : 1, // single season
-            "seasons" : [ObjectId("5fa2550bd415daab6e296014")]
-        }
+        "season_count" : 1
     },
     {
         "content_id" : "g012",
@@ -436,10 +412,7 @@ const contentDetails = [
             "director" : "steven moffat",
             "rating" : 8.5
         },
-        "season_data" : {
-            "season_count" : 2,
-            "seasons" : [ObjectId("5fa2550bd415daab6e296014"), ObjectId("5fa25b55d415daab6e296018")]
-        }
+        "season_count" : 2
     },
     {
         "content_id" : "f789",
@@ -462,10 +435,7 @@ const contentDetails = [
             "director" : "alex pina",
             "rating" : 9.5
         },
-        "season_data" : {
-            "season_count" : 2,
-            "seasons" : [ObjectId("5fa2550bd415daab6e296014"), ObjectId("5fa25b55d415daab6e296018")]
-        }
+        "season_count" : 2
     }
 ]
 
@@ -484,6 +454,8 @@ const contentDetails = [
 //테스트용에서는 같은 데이터 링크 걸어놓으면 되기 때문에 episode 개수가 다른 2개만 만듬.
 const seasonDetails = [
     {
+        "content_id" : "abc",
+        "season_number" : 1,
         "episode_count" :3,
         "season_statistics" : [
             {
@@ -496,11 +468,11 @@ const seasonDetails = [
                 "statistics_name" : "sampleStat for season1",
                 "url" : "/test/statistics/sampleStat.png"
             }
-        ],
-        "episodes" : [ObjectId("5fa253c010e1484f9858b101"), ObjectId("5fa253d010e1484f9858b102"),
-        ObjectId("5fa253db10e1484f9858b103")]
+        ]
     },
     {
+        "content_id" : "abc",
+        "season_number" : 2,
         "episode_count" :4,
         "season_statistics" : [
             {
@@ -513,15 +485,16 @@ const seasonDetails = [
                 "statistics_name" : "sampleStat for season1",
                 "url" : "/test/statistics/sampleStat.png"
             }
-        ],
-        "episodes" : [ObjectId("5fa253c010e1484f9858b101"), ObjectId("5fa253d010e1484f9858b102"),
-            ObjectId("5fa253db10e1484f9858b103"), ObjectId("5fa253e310e1484f9858b104")]
+        ]
     }
 ]
 
 //전부 같은 형태일 것. 다만 다른 object id 넣기 위해서 name만 다른 최대 4개의 복제본 생성해 사용함
 const leafEpisodes = [
     {
+        "content_id" : "abc",
+        "season_number" : 1,
+        "episode_number" : 1,
         "episode_statistics" : [
             {
                 "statistics_type" : "wordcloud",
@@ -536,6 +509,9 @@ const leafEpisodes = [
         ]
     },
     {
+        "content_id" : "abc",
+        "season_number" : 1,
+        "episode_number" : 2,
         "episode_statistics" : [
             {
                 "statistics_type" : "wordcloud",
@@ -550,6 +526,9 @@ const leafEpisodes = [
         ]
     },
     {
+        "content_id" : "abc",
+        "season_number" : 1,
+        "episode_number" : 3,
         "episode_statistics" : [
             {
                 "statistics_type" : "wordcloud",
@@ -564,6 +543,9 @@ const leafEpisodes = [
         ]
     },
     {
+        "content_id" : "abc",
+        "season_number" : 1,
+        "episode_number" : 4,
         "episode_statistics" : [
             {
                 "statistics_type" : "wordcloud",
