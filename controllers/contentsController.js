@@ -24,7 +24,10 @@ const getTrendingContents = async(req, res, next)=>{
             results : []
         });
     }
-    const contentOverviews = result.map(extractContentOverview);
+    let contentOverviews = {};
+    if(result.hasOwnProperty('results')){
+        contentOverviews = result.results.map(extractContentOverview);
+    }
     res.json({
         results: contentOverviews
     });
@@ -46,7 +49,10 @@ const getNewContents = async(req, res, next)=>{
             results : []
         });
     }
-    const contentOverviews = result.map(extractContentOverview);
+    let contentOverviews = {};
+    if(result.hasOwnProperty('results')){
+        contentOverviews = result.results.map(extractContentOverview);
+    }
     res.json({
         results: contentOverviews
     });
