@@ -6,7 +6,7 @@ const extractCommonParams = (params)=>{
     const commonParams = {}
     if(params.hasOwnProperty('search_word')){
         commonParams["$or"] = [{"title_kr" : {$regex:params.search_word}},
-            {"title_en" : {$regex:params.search_word}}]
+            {"title_en" : {$regex:params.search_word, $options:"i"}}]
     }
     if(params.hasOwnProperty('sub_type') && params.sub_type.length > 0){
         commonParams.sub_type = {$in:params.sub_type}

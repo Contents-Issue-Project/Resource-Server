@@ -5,7 +5,7 @@ const contentSchema = new Schema({
     /*////////////////////////////////////////*/
     /*////////start of contents overview//////*/
     /*////////////////////////////////////////*/
-    content_id:{ // imdb
+    content_id:{
         type:String,
         required:true,
         unique:true
@@ -30,7 +30,8 @@ const contentSchema = new Schema({
     },
     poster_url : {
         type : String,
-        required : true
+        required : true,
+        default: "/test/posters/redpanda.jpg"
     },
     top_words : [{type : String, lowercase: true}],
     sub_type : [String],
@@ -40,10 +41,9 @@ const contentSchema = new Schema({
 
     type_additional_data : Schema.Types.Mixed, //content_type에 따라 다름
 
-    is_hot : Boolean,
-
-    season_data : { // is_single이 false일때만 적용.
-        season_count : Number
+    is_hot : {
+        type : Boolean,
+        default:false
     },
 
     single_statistics : [ // is_single이 true일때만 적용.
@@ -52,7 +52,12 @@ const contentSchema = new Schema({
             statistics_name : String,
             url : String
         }
-    ]
+    ],
+
+    season_count : {
+        type:Number,
+        default:0
+    }
 });
 
-export default mongoose.model('Content', contentSchema);
+export default mongoose.model('content', contentSchema);
