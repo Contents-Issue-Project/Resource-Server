@@ -11,7 +11,7 @@ const getEpisodeDetail = async(contentId, seasonNumber, episodeNumber)=>{
     {
         result = {}
     }
-    console.log(result)
+    // console.log(result)
     return result;
 }
 

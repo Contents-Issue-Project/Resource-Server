@@ -23,6 +23,7 @@ const getTrendingContents = async(req, res, next)=>{
             "message" : "resultCount should be 10 or 30",
             results : []
         });
+        console.log(`trending request : ${resultCount}\n resultCount should be 10 or 30`);
     }
     let contentOverviews = {};
     if(result.hasOwnProperty('results')){
@@ -48,6 +49,7 @@ const getNewContents = async(req, res, next)=>{
             "message" : "resultCount should be 10 or 30",
             results : []
         });
+        console.log(`new request : ${resultCount}\n resultCount should be 10 or 30`);
     }
     let contentOverviews = {};
     if(result.hasOwnProperty('results')){
@@ -115,7 +117,7 @@ const getEpisodeDetails = async(req, res, next)=>{
         res.json({});
     }
 
-    console.log(result);
+    // console.log(result);
     if('content_id' in result){
         res.status(200);
     }
