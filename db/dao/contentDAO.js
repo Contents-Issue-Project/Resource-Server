@@ -1,5 +1,9 @@
 import ContentModel from "../schemas/content.js";
 
+const findContent = async(searchParams)=>{
+    return ContentModel.findOne(searchParams);
+}
+
 const findContents = async(searchParams)=>{
     // 없을 경우 null
     return ContentModel.find(searchParams);
@@ -15,6 +19,7 @@ const deleteContent = async(contentId)=>{
 }
 
 export default {
+    findContent,
     findContents,
     addContent,
     deleteContent
