@@ -6,7 +6,7 @@ const extractCommonParams = (params)=>{
     const commonParams = {}
     if(params.hasOwnProperty('search_word')){
         commonParams["$or"] = [{"title_kr" : {$regex:params.search_word}},
-            {"title_en" : {$regex:params.search_word}}]
+            {"title_en" : {$regex:params.search_word, $options:"i"}}]
     }
     if(params.hasOwnProperty('sub_type') && params.sub_type.length > 0){
         commonParams.sub_type = {$in:params.sub_type}
@@ -28,7 +28,7 @@ const searchMovie = async(searchParams)=>{
         
         const searchResult = await contentDAO.findContents(adaptedSearchParams);
 
-        console.log(searchResult);
+        // console.log(searchResult);
 
         if(searchResult.length > 0){
             const contentOverviews = searchResult.map(extractContentOverview);
@@ -51,7 +51,7 @@ const searchDrama = async(searchParams)=>{
 
         const searchResult = await contentDAO.findContents(adaptedSearchParams);
 
-        console.log(searchResult);
+        // console.log(searchResult);
 
         if(searchResult.length > 0){
             const contentOverviews = searchResult.map(extractContentOverview);
@@ -73,7 +73,7 @@ const searchAll = async(searchParams)=>{
 
         const searchResult = await contentDAO.findContents(adaptedSearchParams);
 
-        console.log(searchResult);
+        // console.log(searchResult);
 
         if(searchResult.length > 0){
             const contentOverviews = searchResult.map(extractContentOverview);

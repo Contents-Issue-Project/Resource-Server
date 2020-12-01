@@ -11,10 +11,11 @@ const searchContents = async(req,res,next)=>{
         res.json({
             message : validationResult.err_message
         });
+        console.log(`search request : ${req.body}\n ${validationResult.err_message}`);
         return;
     }
 
-    let searchResult;
+    let searchResult=[];
     switch(contentType){
         case 'movie':
             searchResult = await searchService.searchMovie(searchParams);
@@ -28,6 +29,10 @@ const searchContents = async(req,res,next)=>{
             searchResult = await searchService.searchAll(searchParams);
             break;
     }
+    if(searchResult.length ===0){
+        console.log(`search request : ${req.body}\nno search results`);
+    }
+
     res.json({
         results: searchResult
     });
